@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Libros{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="top">
+    <h2>Libros</h2>
+    <a class="btn" href="{{ url_for('libro_nuevo') }}">+ Nuevo libro</a>
+  </div>
+  {% if libros %}
+  <table>
+    <thead><tr><th>#</th><th>Título</th><th>Autor</th><th>ISBN</th><th>Ejemplares</th><th></th></tr></thead>
+    <tbody>
+    {% for l in libros %}
+      <tr>
+        <td>{{ l.id_libro }}</td><td>{{ l.titulo }}</td><td>{{ l.autor }}</td>
+        <td>{{ l.isbn }}</td><td>{{ l.ejemplares_disponibles }}</td>
+        <td>
+          <a class="btn sm sec" href="{{ url_for('libro_editar', id_libro=l.id_libro) }}">Editar</a>
+          <form class="inline" method="post" action="{{ url_for('libro_eliminar', id_libro=l.id_libro) }}"
+                onsubmit="return confirm('¿Eliminar este libro?');">
+            <button class="btn sm del" type="submit">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="empty">No hay libros registrados.</p>{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>No se pudo conectar a la base de datos</h2>
+  <p>Revisa el archivo <code>.env</code>, el Security Group <code>sg-rds</code> y que RDS esté disponible.</p>
+  <pre>{{ detalle }}</pre>
+</div>
+{% endblock %}

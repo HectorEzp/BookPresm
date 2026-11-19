@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Editar' if prestamo else 'Nuevo' }} préstamo{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>{{ 'Editar préstamo' if prestamo else 'Nuevo préstamo' }}</h2>
+  <form method="post">
+    <label>Libro</label>
+    <select name="id_libro" required>
+      {% for l in libros %}
+      <option value="{{ l.id_libro }}" {{ 'selected' if prestamo and prestamo.id_libro == l.id_libro }}>{{ l.titulo }}</option>
+      {% endfor %}
+    </select>
+    <label>Nombre del usuario</label>
+    <input name="nombre_usuario" maxlength="100" required value="{{ prestamo.nombre_usuario if prestamo else '' }}">
+    <label>Fecha de préstamo</label>
+    <input type="date" name="fecha_prestamo" required value="{{ prestamo.fecha_prestamo if prestamo else '' }}">
+    <label>Fecha de devolución (opcional)</label>
+    <input type="date" name="fecha_devolucion" value="{{ prestamo.fecha_devolucion if prestamo and prestamo.fecha_devolucion else '' }}">
+    <label>Estado</label>
+    <select name="estado">
+      {% for e in ['ACTIVO','DEVUELTO','VENCIDO'] %}
+      <option {{ 'selected' if prestamo and prestamo.estado == e }}>{{ e }}</option>
+      {% endfor %}
+    </select>
+    <div class="actions">
+      <button class="btn" type="submit">Guardar</button>
+      <a class="btn sec" href="{{ url_for('prestamos') }}">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

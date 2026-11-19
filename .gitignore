@@ -1,0 +1,13 @@
+.env
+config.properties
+*.pem
+*.ppk
+venv/
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+target/
+*.class
+*.jar

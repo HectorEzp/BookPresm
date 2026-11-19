@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Préstamos{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="top">
+    <h2>Préstamos</h2>
+    <a class="btn" href="{{ url_for('prestamo_nuevo') }}">+ Nuevo préstamo</a>
+  </div>
+  {% if prestamos %}
+  <table>
+    <thead><tr><th>#</th><th>Libro</th><th>Usuario</th><th>Préstamo</th><th>Devolución</th><th>Estado</th><th></th></tr></thead>
+    <tbody>
+    {% for p in prestamos %}
+      <tr>
+        <td>{{ p.id_prestamo }}</td>
+        <td>{{ p.titulo }}</td>
+        <td>{{ p.nombre_usuario }}</td>
+        <td>{{ p.fecha_prestamo }}</td>
+        <td>{{ p.fecha_devolucion or '—' }}</td>
+        <td><span class="badge {{ p.estado }}">{{ p.estado }}</span></td>
+        <td>
+          <a class="btn sm sec" href="{{ url_for('prestamo_editar', id_prestamo=p.id_prestamo) }}">Editar</a>
+          <form class="inline" method="post" action="{{ url_for('prestamo_eliminar', id_prestamo=p.id_prestamo) }}"
+                onsubmit="return confirm('¿Eliminar este préstamo?');">
+            <button class="btn sm del" type="submit">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="empty">No hay préstamos registrados.</p>{% endif %}
+</div>
+{% endblock %}

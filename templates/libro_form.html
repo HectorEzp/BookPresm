@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Editar' if libro else 'Nuevo' }} libro{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>{{ 'Editar libro' if libro else 'Nuevo libro' }}</h2>
+  <form method="post">
+    <label>Título</label>
+    <input name="titulo" maxlength="150" required value="{{ libro.titulo if libro else '' }}">
+    <label>Autor</label>
+    <input name="autor" maxlength="100" required value="{{ libro.autor if libro else '' }}">
+    <label>ISBN</label>
+    <input name="isbn" maxlength="20" required value="{{ libro.isbn if libro else '' }}">
+    <label>Ejemplares disponibles</label>
+    <input type="number" min="0" name="ejemplares_disponibles" required value="{{ libro.ejemplares_disponibles if libro else 1 }}">
+    <div class="actions">
+      <button class="btn" type="submit">Guardar</button>
+      <a class="btn sec" href="{{ url_for('libros') }}">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

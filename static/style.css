@@ -1,0 +1,31 @@
+:root{--bg:#f6f4ef;--card:#fff;--ink:#222;--muted:#6b6b6b;--brand:#8b3a2b;--brand-d:#6e2c20;--line:#e4e0d8;--ok:#2e7d4f;--err:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--ink)}
+header{background:var(--brand);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+header h1{margin:0;font-size:1.3rem}
+nav a{color:#fff;text-decoration:none;margin-right:18px;opacity:.85;font-family:system-ui,sans-serif;font-size:.95rem}
+nav a:hover{opacity:1;text-decoration:underline}
+main{max-width:1000px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;overflow-x:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+h2{margin:0}
+table{width:100%;border-collapse:collapse;font-family:system-ui,sans-serif;font-size:.93rem}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;text-decoration:none;font-size:.9rem;font-family:system-ui,sans-serif}
+.btn:hover{background:var(--brand-d)}
+.btn.sec{background:#e9e5dc;color:var(--ink)}
+.btn.del{background:var(--err)}
+.btn.sm{padding:5px 10px;font-size:.8rem}
+form.inline{display:inline}
+label{display:block;margin:12px 0 4px;font-family:system-ui,sans-serif;font-size:.85rem;color:var(--muted)}
+input,select{width:100%;padding:9px;border:1px solid var(--line);border-radius:6px;font-size:1rem}
+.actions{margin-top:20px;display:flex;gap:10px}
+.flash{padding:10px 14px;border-radius:6px;margin-bottom:14px;font-family:system-ui,sans-serif;font-size:.92rem}
+.flash.ok{background:#e3f3e9;color:var(--ok)}
+.flash.error{background:#fbe6e4;color:var(--err)}
+.badge{padding:2px 9px;border-radius:99px;font-size:.78rem;background:#e9e5dc}
+.badge.ACTIVO{background:#fff1cc;color:#7a5a00}
+.badge.DEVUELTO{background:#e3f3e9;color:var(--ok)}
+.badge.VENCIDO{background:#fbe6e4;color:var(--err)}
+.empty{color:var(--muted);text-align:center;padding:24px}
